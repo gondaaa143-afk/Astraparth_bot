@@ -237,132 +237,40 @@ body{background:#f3f3f3;color:#111;overflow-x:hidden}
   <button class="nav-btn" onclick="openPage('profile')">👤</button>
 </div>
 <script>
-const tg = window.Telegram.WebApp;
+<script>
+const tg = window.Telegram?.WebApp;
 
-tg.ready();
-tg.expand();
+tg?.ready();
+tg?.expand();
 
-// ---------- Supabase ----------
-const SUPABASE_URL = "https://urwuqeujgqrsjjvzfzir.supabase.co";
-const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVyd3VxZXVqZ3Fyc2pqdnpmemlyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTA1MzUzNDMsImV4cCI6MjEwNjExMTM0M30.OzqEyvkR8UDD4vWpILiD0ay3rF-7zo_IDSjgv5PiqO8";
-
-const supabase = window.supabase.createClient(
-  SUPABASE_URL,
-  SUPABASE_KEY
-);
-
-// ---------- Telegram User ----------
-const tgUser = tg.initDataUnsafe.user;
-
-if (tgUser) {
-  document.getElementById("username").innerText = tgUser.first_name;
+const user = tg?.initDataUnsafe?.user;
+if(user){
+  const el=document.getElementById("username");
+  if(el) el.innerText=user.first_name;
 }
 
-// ---------- Navigation ----------
-let stack = ["home"];
+let stack=["home"];
 
-function haptic() {
-  tg.HapticFeedback?.impactOccurred("light");
-}
-
-function showPage(id) {
-  document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
+function showPage(id){
+  document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
   document.getElementById(id).classList.add("active");
 }
 
-function openPage(id) {
-  haptic();
+window.openPage=function(id){
   showPage(id);
-
-  if (stack[stack.length - 1] !== id) {
-    stack.push(id);
-  }
-
-  if (id !== "home") {
-    tg.BackButton.show();
-  }
+  if(stack[stack.length-1]!==id) stack.push(id);
+  tg?.BackButton.show();
 }
 
-function goBack() {
-  haptic();
-
-  if (stack.length > 1) stack.pop();
-
-  const last = stack[stack.length - 1];
+window.goBack=function(){
+  if(stack.length>1) stack.pop();
+  const last=stack[stack.length-1];
   showPage(last);
-
-  if (last === "home") {
-    tg.BackButton.hide();
-  }
+  if(last==="home") tg?.BackButton.hide();
 }
 
-tg.BackButton.onClick(goBack);
-tg.BackButton.hide();
-
-// ---------- Save User ----------
-async function saveUser() {
-  if (!tgUser) return;
-
-  await supabase.from("users").upsert({
-    telegram_id: tgUser.id,
-    name: tgUser.first_name,
-    username: tgUser.username || ""
-  });
-}
-
-// ---------- Load Courses ----------
-async function loadCourses() {
-  const { data } = await supabase
-    .from("courses")
-    .select("*");
-
-  if (!data) return;
-
-  const cards = document.querySelectorAll("#courses .card");
-
-  data.forEach((course, i) => {
-    if (cards[i]) {
-      cards[i].innerHTML = `
-        <h3>${course.title}</h3>
-        <div class="meta">${course.description}</div>
-        <div class="progress">
-          <div class="fill" style="width:${course.progress}%"></div>
-        </div>
-      `;
-    }
-  });
-}
-
-// ---------- Load Current Affairs ----------
-async function loadCurrentAffairs() {
-  const { data } = await supabase
-    .from("current_affairs")
-    .select("*")
-    .order("created_at", { ascending: false })
-    .limit(1);
-
-  if (data && data.length) {
-    const card = document.querySelector("#home .card:nth-of-type(3)");
-
-    if (card) {
-      card.innerHTML = `
-        <h3>${data[0].title}</h3>
-        <div class="meta">${data[0].content}</div>
-      `;
-    }
-  }
-}
-
-// ---------- Start ----------
-(async () => {
-  try {
-    await saveUser();
-    await loadCourses();
-    await loadCurrentAffairs();
-  } catch (e) {
-    console.log("Backend Error:", e);
-  }
-})();
+tg?.BackButton.onClick(goBack);
+tg?.BackButton.hide();
 </script>
 
 </body>
