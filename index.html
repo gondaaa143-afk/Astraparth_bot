@@ -11,41 +11,168 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins,sans-serif}
-body{background:#f3f3f3;color:#111;overflow-x:hidden}
-.page{display:none;min-height:100vh;padding:18px 18px 100px}
-.page.active{display:block;animation:fade .3s ease}
-@keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Poppins,sans-serif;
+}
 
-.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
-.logo{font-size:30px;font-weight:800}
-.circle{width:46px;height:46px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 25px rgba(0,0,0,.08)}
+body{
+  background:#f3f3f3;
+  color:#111;
+  overflow-x:hidden;
+}
 
-.hero{background:#111;color:#fff;border-radius:30px;padding:26px;margin-bottom:22px}
-.hero h2{font-size:28px}
-.hero p{margin:10px 0 18px;opacity:.8}
-.btn{background:#fff;color:#111;border:none;padding:14px 20px;border-radius:18px;font-weight:700}
+.page{
+  display:none;
+  min-height:100vh;
+  padding:18px 18px 100px;
+}
 
-.section{font-size:20px;font-weight:700;margin-bottom:14px}
-.card{background:#fff;border-radius:26px;padding:20px;margin-bottom:16px;box-shadow:0 10px 30px rgba(0,0,0,.06)}
-.row{display:flex;gap:14px}
-.small{flex:1}
-.meta{color:#666;font-size:13px;margin-top:6px}
+.page.active{
+  display:block;
+  animation:fade .25s ease;
+}
 
-.progress{height:8px;background:#ddd;border-radius:999px;margin-top:12px;overflow:hidden}
-.fill{height:100%;width:65%;background:#111}
+@keyframes fade{
+  from{opacity:0;transform:translateY(10px)}
+  to{opacity:1;transform:none}
+}
 
-.calendar{display:grid;grid-template-columns:repeat(7,1fr);gap:8px}
-.day{background:#fff;padding:10px;border-radius:14px;text-align:center}
-.active-day{background:#111;color:#fff}
+.top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:20px;
+}
 
-.back{display:flex;align-items:center;gap:10px;font-weight:700;margin-bottom:18px}
-.back .circle{width:40px;height:40px}
+.logo{
+  font-size:30px;
+  font-weight:800;
+}
 
-.bottom{position:fixed;left:16px;right:16px;bottom:16px;background:#fff;border-radius:28px;padding:14px;display:flex;justify-content:space-around;box-shadow:0 20px 45px rgba(0,0,0,.12)}
-.nav-btn{border:none;background:none;font-size:22px}
+.circle{
+  width:46px;
+  height:46px;
+  border-radius:50%;
+  background:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 8px 20px rgba(0,0,0,.08);
+}
 
-.avatar{width:48px;height:48px;border-radius:50%;background:#111;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700}
+.hero{
+  background:#111;
+  color:#fff;
+  border-radius:30px;
+  padding:26px;
+  margin-bottom:20px;
+}
+
+.hero h2{
+  font-size:28px;
+}
+
+.hero p{
+  margin:10px 0 18px;
+  opacity:.8;
+}
+
+.btn{
+  background:#fff;
+  color:#111;
+  border:none;
+  padding:13px 18px;
+  border-radius:16px;
+  font-weight:700;
+  cursor:pointer;
+}
+
+.card{
+  background:#fff;
+  border-radius:24px;
+  padding:18px;
+  margin-bottom:14px;
+  box-shadow:0 8px 20px rgba(0,0,0,.06);
+  cursor:pointer;
+}
+
+.row{
+  display:flex;
+  gap:12px;
+}
+
+.small{
+  flex:1;
+}
+
+.meta{
+  color:#666;
+  font-size:13px;
+  margin-top:6px;
+}
+
+.progress{
+  height:8px;
+  background:#ddd;
+  border-radius:999px;
+  margin-top:12px;
+  overflow:hidden;
+}
+
+.fill{
+  height:100%;
+  width:65%;
+  background:#111;
+}
+
+.back{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:18px;
+  font-weight:700;
+  cursor:pointer;
+}
+
+.back .circle{
+  width:38px;
+  height:38px;
+}
+
+.bottom{
+  position:fixed;
+  left:16px;
+  right:16px;
+  bottom:16px;
+  background:#fff;
+  border-radius:24px;
+  padding:14px;
+  display:flex;
+  justify-content:space-around;
+  box-shadow:0 10px 30px rgba(0,0,0,.12);
+}
+
+.bottom button{
+  border:none;
+  background:none;
+  font-size:22px;
+  cursor:pointer;
+}
+
+.avatar{
+  width:48px;
+  height:48px;
+  border-radius:50%;
+  background:#111;
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:700;
+}
 </style>
 </head>
 <body>
@@ -63,12 +190,9 @@ body{background:#f3f3f3;color:#111;overflow-x:hidden}
     <button class="btn" onclick="openPage('courses')">Continue Learning</button>
   </div>
 
-  <div class="section">Continue Learning</div>
-
   <div class="card" onclick="openPage('courses')">
-    <h3>GS Foundation</h3>
-    <div class="meta">120 Lessons • 65% Complete</div>
-    <div class="progress"><div class="fill"></div></div>
+    <h3>Course Library</h3>
+    <div class="meta">Live courses from Supabase</div>
   </div>
 
   <div class="row">
@@ -84,8 +208,8 @@ body{background:#f3f3f3;color:#111;overflow-x:hidden}
   </div>
 
   <div class="card">
-    <h3>Current Affairs</h3>
-    <div class="meta">Latest The Hindu + PIB</div>
+    <h3 id="caTitle">Current Affairs</h3>
+    <div class="meta" id="caContent">Loading...</div>
   </div>
 
   <div class="card" onclick="openPage('profile')">
@@ -99,7 +223,8 @@ body{background:#f3f3f3;color:#111;overflow-x:hidden}
 <div id="courses" class="page">
 
   <div class="back" onclick="goBack()">
-    <div class="circle">←</div>Back
+    <div class="circle">←</div>
+    Back
   </div>
 
   <div class="hero">
@@ -107,20 +232,8 @@ body{background:#f3f3f3;color:#111;overflow-x:hidden}
     <p>Choose Your Subject</p>
   </div>
 
-  <div class="card">
-    <h3>General Studies</h3>
-    <div class="meta">History • Polity • Economy</div>
-  </div>
-
-  <div class="card">
-    <h3>CSAT</h3>
-    <div class="meta">Reasoning • Maths</div>
-  </div>
-
-  <div class="card">
-    <h3>Hindi Optional</h3>
-    <div class="meta">Complete Notes</div>
-  </div>
+  <!-- Live Courses Here -->
+  <div id="coursesList"></div>
 
 </div>
 
@@ -128,7 +241,8 @@ body{background:#f3f3f3;color:#111;overflow-x:hidden}
 <div id="tests" class="page">
 
   <div class="back" onclick="goBack()">
-    <div class="circle">←</div>Back
+    <div class="circle">←</div>
+    Back
   </div>
 
   <div class="hero">
@@ -152,7 +266,8 @@ body{background:#f3f3f3;color:#111;overflow-x:hidden}
 <div id="calendar" class="page">
 
   <div class="back" onclick="goBack()">
-    <div class="circle">←</div>Back
+    <div class="circle">←</div>
+    Back
   </div>
 
   <div class="hero">
@@ -162,38 +277,28 @@ body{background:#f3f3f3;color:#111;overflow-x:hidden}
 
   <div class="card">
 
-    <div class="calendar">
-      <div class="day">1</div>
-      <div class="day">2</div>
-      <div class="day">3</div>
-      <div class="day">4</div>
-      <div class="day">5</div>
-      <div class="day active-day">6</div>
-      <div class="day">7</div>
+    <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:8px;">
 
-      <div class="day">8</div>
-      <div class="day">9</div>
-      <div class="day">10</div>
-      <div class="day">11</div>
-      <div class="day">12</div>
-      <div class="day active-day">13</div>
-      <div class="day">14</div>
+      <div class="circle" style="width:auto;height:40px;">1</div>
+      <div class="circle" style="width:auto;height:40px;">2</div>
+      <div class="circle" style="width:auto;height:40px;">3</div>
+      <div class="circle" style="width:auto;height:40px;">4</div>
+      <div class="circle" style="width:auto;height:40px;">5</div>
 
-      <div class="day">15</div>
-      <div class="day">16</div>
-      <div class="day">17</div>
-      <div class="day">18</div>
-      <div class="day">19</div>
-      <div class="day">20</div>
-      <div class="day">21</div>
+      <div class="circle" style="width:auto;height:40px;background:#111;color:#fff;">6</div>
 
-      <div class="day">22</div>
-      <div class="day">23</div>
-      <div class="day">24</div>
-      <div class="day">25</div>
-      <div class="day">26</div>
-      <div class="day">27</div>
-      <div class="day">28</div>
+      <div class="circle" style="width:auto;height:40px;">7</div>
+
+      <div class="circle" style="width:auto;height:40px;">8</div>
+      <div class="circle" style="width:auto;height:40px;">9</div>
+      <div class="circle" style="width:auto;height:40px;">10</div>
+      <div class="circle" style="width:auto;height:40px;">11</div>
+      <div class="circle" style="width:auto;height:40px;">12</div>
+
+      <div class="circle" style="width:auto;height:40px;background:#111;color:#fff;">13</div>
+
+      <div class="circle" style="width:auto;height:40px;">14</div>
+
     </div>
 
   </div>
@@ -204,7 +309,8 @@ body{background:#f3f3f3;color:#111;overflow-x:hidden}
 <div id="profile" class="page">
 
   <div class="back" onclick="goBack()">
-    <div class="circle">←</div>Back
+    <div class="circle">←</div>
+    Back
   </div>
 
   <div class="hero">
@@ -213,64 +319,144 @@ body{background:#f3f3f3;color:#111;overflow-x:hidden}
   </div>
 
   <div class="card">
+
     <div style="display:flex;align-items:center;gap:14px;">
+
       <div class="avatar">A</div>
+
       <div>
         <h3 id="username">Telegram User</h3>
         <div class="meta">Premium Member</div>
       </div>
+
     </div>
+
   </div>
 
   <div class="card">
+
     <h3>Progress</h3>
-    <div class="progress"><div class="fill"></div></div>
+
+    <div class="progress">
+      <div class="fill"></div>
+    </div>
+
   </div>
 
 </div>
 
 <!-- Bottom Navigation -->
+
 <div class="bottom">
-  <button class="nav-btn" onclick="openPage('home')">🏠</button>
-  <button class="nav-btn" onclick="openPage('courses')">📚</button>
-  <button class="nav-btn" onclick="openPage('tests')">📝</button>
-  <button class="nav-btn" onclick="openPage('profile')">👤</button>
+
+  <button onclick="openPage('home')">🏠</button>
+
+  <button onclick="openPage('courses')">📚</button>
+
+  <button onclick="openPage('tests')">📝</button>
+
+  <button onclick="openPage('profile')">👤</button>
+
 </div>
 <script>
-<script>
-const tg = window.Telegram?.WebApp;
+const tg = window.Telegram.WebApp;
+tg.ready();
+tg.expand();
 
-tg?.ready();
-tg?.expand();
+// ===== Supabase =====
+const supabase = window.supabase.createClient(
+  "https://urwuqeujgqrsjjvzfzir.supabase.co",
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVyd3VxZXVqZ3Fyc2pqdnpmemlyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTA1MzUzNDMsImV4cCI6MjEwNjExMTM0M30.OzqEyvkR8UDD4vWpILiD0ay3rF-7zo_IDSjgv5PiqO8"
+);
 
-const user = tg?.initDataUnsafe?.user;
-if(user){
-  const el=document.getElementById("username");
-  if(el) el.innerText=user.first_name;
+// ===== Telegram User =====
+const tgUser = tg.initDataUnsafe.user;
+if (tgUser) {
+  document.getElementById("username").innerText = tgUser.first_name;
 }
 
-let stack=["home"];
+// ===== Navigation =====
+let stack = ["home"];
 
-function showPage(id){
-  document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+function showPage(id) {
+  document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
   document.getElementById(id).classList.add("active");
 }
 
-window.openPage=function(id){
+window.openPage = function(id) {
   showPage(id);
-  if(stack[stack.length-1]!==id) stack.push(id);
-  tg?.BackButton.show();
-}
+  if (stack[stack.length - 1] !== id) stack.push(id);
+  if (id !== "home") tg.BackButton.show();
+};
 
-window.goBack=function(){
-  if(stack.length>1) stack.pop();
-  const last=stack[stack.length-1];
+window.goBack = function() {
+  if (stack.length > 1) stack.pop();
+  const last = stack[stack.length - 1];
   showPage(last);
-  if(last==="home") tg?.BackButton.hide();
+  if (last === "home") tg.BackButton.hide();
+};
+
+tg.BackButton.onClick(goBack);
+tg.BackButton.hide();
+
+// ===== Save User =====
+async function saveUser() {
+  if (!tgUser) return;
+
+  await supabase.from("users").upsert(
+    {
+      telegram_id: tgUser.id,
+      name: tgUser.first_name,
+      username: tgUser.username || ""
+    },
+    { onConflict: "telegram_id" }
+  );
 }
 
-tg?.BackButton.onClick(goBack);
-tg?.BackButton.hide();
+// ===== Load Courses =====
+async function loadCourses() {
+  const { data } = await supabase.from("courses").select("*");
+
+  const wrap = document.getElementById("coursesList");
+  wrap.innerHTML = "";
+
+  (data || []).forEach(course => {
+    wrap.innerHTML += `
+      <div class="card">
+        <h3>${course.title}</h3>
+        <div class="meta">${course.description}</div>
+        <div class="progress">
+          <div class="fill" style="width:${course.progress}%"></div>
+        </div>
+      </div>
+    `;
+  });
+}
+
+// ===== Load Current Affairs =====
+async function loadCurrentAffairs() {
+  const { data } = await supabase
+    .from("current_affairs")
+    .select("*")
+    .order("created_at", { ascending: false })
+    .limit(1);
+
+  if (data && data.length) {
+    document.getElementById("caTitle").innerText = data[0].title;
+    document.getElementById("caContent").innerText = data[0].content;
+  }
+}
+
+// ===== Start =====
+(async () => {
+  try {
+    await saveUser();
+    await loadCourses();
+    await loadCurrentAffairs();
+  } catch (err) {
+    console.log("Supabase Error:", err);
+  }
+})();
 </script>
 
 </body>
