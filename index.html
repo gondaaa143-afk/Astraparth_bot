@@ -103,38 +103,46 @@ body{
 
 <body>
 
-<div class="header">
-    <div class="logo">Astra Parth</div>
-    <div class="icon">🔍</div>
-</div>
+<div id="home" class="page active">
+  <div class="top">
+    <h1>Astra Parth</h1>
+    <div class="search">🔍</div>
+  </div>
 
-<div class="hero">
+  <div class="hero">
     <h2>UPSC Preparation</h2>
     <p>Daily Current Affairs, Notes & Tests</p>
-    <a href="#" class="btn">Start Learning</a>
+  </div>
+
+  <div class="card">Current Affairs</div>
+  <div class="card">Mock Tests</div>
 </div>
 
-<div class="card">
-    <h3>Current Affairs</h3>
-    <p>Today's important updates</p>
+<div id="learn" class="page">
+  <h2>Courses</h2>
+  <div class="card">GS Foundation</div>
+  <div class="card">CSAT</div>
+  <div class="card">Hindi Optional</div>
 </div>
 
-<div class="card">
-    <h3>Mock Tests</h3>
-    <p>Practice daily MCQs</p>
+<div id="test" class="page">
+  <h2>Mock Tests</h2>
+  <div class="card">Today's Quiz</div>
 </div>
 
-<div class="card">
-    <h3>Leaderboard</h3>
-    <p>Track your progress</p>
+<div id="profile" class="page">
+  <h2>Profile</h2>
+  <div class="card">Progress: 0%</div>
 </div>
 
-<div class="bottom-nav">
-    <span>🏠</span>
-    <span>📚</span>
-    <span>📝</span>
-    <span>👤</span>
+<div class="nav">
+  <button onclick="openPage('home')">🏠</button>
+  <button onclick="openPage('learn')">📚</button>
+  <button onclick="openPage('test')">📝</button>
+  <button onclick="openPage('profile')">👤</button>
 </div>
+
+<script src="script.js"></script>
 
 <script>
 Telegram.WebApp.ready();
