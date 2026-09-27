@@ -81,6 +81,7 @@ body{
  font-weight:700
 }
 </style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 
 <body>
@@ -221,7 +222,13 @@ body{
 const tg=window.Telegram.WebApp;
 tg.ready();
 tg.expand();
+const SUPABASE_URL="https://urwuqeujgqrsjjvzfzir.supabase.co";
+const SUPABASE_KEY="sb_publishable_zwqk-FGHDESuXRcW_qzMmA_JMxcCQFN";
 
+const supabase=window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_KEY
+);
 const user=tg.initDataUnsafe.user;
 if(user){
  document.getElementById("username").innerText=user.first_name;
@@ -254,6 +261,33 @@ function goBack(){
 
 tg.BackButton.onClick(goBack);
 tg.BackButton.hide();
+const tgUser=tg.initDataUnsafe.user;
+
+async function saveUser(){
+  if(!tgUser) return;
+
+  await supabase.from("users").upsert({
+    telegram_id:tgUser.id,
+    name:tgUser.first_name,
+    username:tgUser.username || ""
+  });
+}
+
+async function loadCourses(){
+  const {data}=await supabase.from("courses").select("*");
+  console.log(data);
+}
+
+async function loadCurrentAffairs(){
+  const {data}=await supabase.from("current_affairs").select("*");
+  console.log(data);
+}
+
+(async()=>{
+  await saveUser();
+  await loadCourses();
+  await loadCurrentAffairs();
+})();
 </script>
 
 </body>
