@@ -271,36 +271,23 @@ tg?.BackButton?.onClick(goBack);
 tg?.BackButton?.hide();
 </script>
 <script>
-<script>
 (async () => {
   const tg = window.Telegram.WebApp;
   const user = tg.initDataUnsafe.user;
 
-  if (!user) {
-    alert("Telegram user nahi mila");
-    return;
-  }
+  if (!user) return;
 
-  const supabase = window.supabase.createClient(
-    "https://urwuqeujgqrsjjvzfzir.supabase.co",
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVyd3VxZXVqcnNqanZ6ZnppciIsInJvbGUiOiJhbm9uIiwiaWF0IjoxNzkwNTM1MzQzLCJleHAiOjIxMDYxMTEzNDN9.OzqEyvkR8UDD4vWpILiD0ay3rF-7zo_IDSjgv5PiqO8"
-  );
-
-  const { error } = await supabase
-    .from("users")
-    .upsert({
+  await fetch("https://urwuqeujgqrsjjvzfzir.supabase.co/functions/v1/super-endpoint", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
       telegram_id: user.id,
       name: user.first_name,
       username: user.username || ""
-    }, {
-      onConflict: "telegram_id"
-    });
-
-  if (error) {
-    alert("Error: " + error.message);
-  } else {
-    alert("User Save Ho Gaya");
-  }
+    })
+  });
 })();
 </script>
 </body>
