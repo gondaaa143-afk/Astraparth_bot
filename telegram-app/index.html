@@ -6,19 +6,16 @@
 <title>Astra Parth</title>
 
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
 <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
 <!-- HOME -->
-<div id="home" class="page active">
-  <div class="top">
-    <h1 class="logo">Astra Parth</h1>
-    <button class="icon-btn">🔍</button>
-  </div>
+<section id="home" class="page active">
+  <header class="top">
+    <h1>Astra Parth</h1>
+    <button class="icon">🔍</button>
+  </header>
 
   <div class="hero">
     <h2>UPSC Premium</h2>
@@ -27,96 +24,58 @@
   </div>
 
   <div class="grid">
-    <div class="glass-card" data-page="courses">
-      <h3>📚 Courses</h3>
-      <span>120 Lessons</span>
-    </div>
-
-    <div class="glass-card" data-page="tests">
-      <h3>📝 Mock Tests</h3>
-      <span>Daily Practice</span>
-    </div>
-
-    <div class="glass-card" data-page="calendar">
-      <h3>📅 Calendar</h3>
-      <span>Study Plan</span>
-    </div>
-
-    <div class="glass-card" data-page="profile">
-      <h3>👤 Profile</h3>
-      <span id="username">Telegram User</span>
-    </div>
+    <div class="card" data-page="courses">📚 Courses</div>
+    <div class="card" data-page="tests">📝 Tests</div>
+    <div class="card" data-page="calendar">📅 Calendar</div>
+    <div class="card" data-page="profile">👤 Profile</div>
   </div>
-</div>
+</section>
 
 <!-- COURSES -->
-<div id="courses" class="page">
-  <div class="top">
-    <button class="icon-btn" onclick="goBack()">←</button>
-    <h1 class="logo">Courses</h1>
-  </div>
+<section id="courses" class="page">
+  <header class="top">
+    <button class="icon back-btn">←</button>
+    <h1>Courses</h1>
+  </header>
 
-  <div class="glass-card">
-    <h3>General Studies</h3>
-    <span>120 Lessons</span>
-  </div>
-
-  <div class="glass-card">
-    <h3>CSAT</h3>
-    <span>Practice Sets</span>
-  </div>
-
-  <div class="glass-card">
-    <h3>Hindi Optional</h3>
-    <span>Notes + PYQs</span>
-  </div>
-</div>
+  <div class="card">General Studies</div>
+  <div class="card">CSAT</div>
+  <div class="card">Hindi Optional</div>
+</section>
 
 <!-- TESTS -->
-<div id="tests" class="page">
-  <div class="top">
-    <button class="icon-btn" onclick="goBack()">←</button>
-    <h1 class="logo">Mock Tests</h1>
-  </div>
+<section id="tests" class="page">
+  <header class="top">
+    <button class="icon back-btn">←</button>
+    <h1>Mock Tests</h1>
+  </header>
 
-  <div class="glass-card">
-    <h3>Today's Mock</h3>
-    <span>50 Questions</span>
-  </div>
-
-  <div class="glass-card">
-    <h3>PYQ Practice</h3>
-    <span>UPSC Previous Year</span>
-  </div>
-</div>
+  <div class="card">Today's Mock</div>
+  <div class="card">PYQ Practice</div>
+</section>
 
 <!-- CALENDAR -->
-<div id="calendar" class="page">
-  <div class="top">
-    <button class="icon-btn" onclick="goBack()">←</button>
-    <h1 class="logo">Calendar</h1>
-  </div>
+<section id="calendar" class="page">
+  <header class="top">
+    <button class="icon back-btn">←</button>
+    <h1>Calendar</h1>
+  </header>
 
-  <div class="glass-card">
-    <h3>Today's Target</h3>
-    <span>GS + CSAT + Current Affairs</span>
-  </div>
-</div>
+  <div class="card">Today's Target</div>
+</section>
 
 <!-- PROFILE -->
-<div id="profile" class="page">
-  <div class="top">
-    <button class="icon-btn" onclick="goBack()">←</button>
-    <h1 class="logo">Profile</h1>
-  </div>
+<section id="profile" class="page">
+  <header class="top">
+    <button class="icon back-btn">←</button>
+    <h1>Profile</h1>
+  </header>
 
-  <div class="glass-card">
-    <h3 id="username">Telegram User</h3>
-    <span>Premium Member</span>
+  <div class="card">
+    <strong id="username">Telegram User</strong>
   </div>
-</div>
+</section>
 
-<!-- Bottom Navigation -->
 <nav class="bottom-nav">
   <button data-nav="home">🏠</button>
   <button data-nav="courses">📚</button>
@@ -124,8 +83,6 @@
   <button data-nav="profile">👤</button>
 </nav>
 
-<script src="config.js"></script>
 <script src="script.js"></script>
-
 </body>
 </html>
