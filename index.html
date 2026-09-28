@@ -268,11 +268,11 @@ async function initBackend() {
     const tgUser = window.Telegram.WebApp.initDataUnsafe.user;
 
     if (tgUser) {
-      await supabase.from("users").upsert({
-        telegram_id: tgUser.id,
-        name: tgUser.first_name,
-        username: tgUser.username || ""
-      }, { onConflict: "telegram_id" });
+     await supabase.from("users").insert({
+  telegram_id: tgUser.id,
+  name: tgUser.first_name,
+  username: tgUser.username || ""
+});
     }
 
     const { data: courses } = await supabase
