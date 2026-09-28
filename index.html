@@ -277,15 +277,24 @@ const supabase = window.supabase.createClient(
 );
 
 (async () => {
-  const user = window.Telegram.WebApp.initDataUnsafe.user;
+  const tg = window.Telegram?.WebApp;
+  const user = tg?.initDataUnsafe?.user;
+
   if (!user) return;
 
   try {
-    await supabase.from("users").insert({
-      telegram_id: user.id,
-      name: user.first_name,
-      username: user.username || ""
-    });
+    const { error } = await supabase
+      .from("users")
+      .upsert(
+        {
+          telegram_id: user.id,
+          name: user.first_name,
+          username: user.username || ""
+        },
+        { onConflict: "telegram_id" }
+      );
+
+    if (error) console.log("Supabase:", error);
   } catch (e) {
     console.log(e);
   }
