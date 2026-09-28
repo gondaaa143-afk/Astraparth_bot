@@ -271,24 +271,39 @@ tg?.BackButton?.onClick(goBack);
 tg?.BackButton?.hide();
 </script>
 <script>
-(async () => {
-  const tg = window.Telegram.WebApp;
+window.Telegram.WebApp.ready();
+
+const tg = window.Telegram.WebApp;
+
+setTimeout(async () => {
   const user = tg.initDataUnsafe.user;
 
-  if (!user) return;
+  if (!user) {
+    console.log("Telegram user not found");
+    return;
+  }
 
-  await fetch("https://urwuqeujgqrsjjvzfzir.supabase.co/functions/v1/super-endpoint", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      telegram_id: user.id,
-      name: user.first_name,
-      username: user.username || ""
-    })
-  });
-})();
+  try {
+    const res = await fetch(
+      "https://urwuqeujgqrsjjvzfzir.supabase.co/functions/v1/super-endpoint",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          telegram_id: user.id,
+          name: user.first_name,
+          username: user.username || ""
+        })
+      }
+    );
+
+    console.log(await res.text());
+  } catch (e) {
+    console.error(e);
+  }
+}, 500);
 </script>
 </body>
 </html>
