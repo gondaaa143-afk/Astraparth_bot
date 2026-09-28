@@ -26,7 +26,35 @@ window.goBack = function(){
   const last = stack[stack.length-1];
   show(last);
   if(last==="home") tg?.BackButton?.hide();
+}// ===== Save Telegram User =====
+
+async function saveTelegramUser() {
+
+  if (!user || !user.id) return;
+
+  try {
+
+    await fetch(CONFIG.EDGE_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        telegram_id: user.id,
+        name: user.first_name,
+        username: user.username || ""
+      })
+    });
+
+    console.log("User Saved");
+
+  } catch (e) {
+    console.log(e);
+  }
+
 }
+
+setTimeout(saveTelegramUser,500);
 
 document.getElementById("continueBtn").onclick = ()=>openPage("courses");
 
