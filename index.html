@@ -276,8 +276,12 @@ window.Telegram.WebApp.ready();
 const tg = window.Telegram.WebApp;
 
 setTimeout(async () => {
-  const user = tg.initDataUnsafe.user;
+ const user = tg.initDataUnsafe?.user || tg.initData?.user;
 
+if (!user || !user.id) {
+  console.log("Telegram user missing");
+  return;
+}
   if (!user) {
     console.log("Telegram user not found");
     return;
