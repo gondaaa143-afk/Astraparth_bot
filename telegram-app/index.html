@@ -8,81 +8,21 @@
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<!-- HOME -->
-<section id="home" class="page active">
-  <header class="top">
-    <h1>Astra Parth</h1>
-    <button class="icon">🔍</button>
-  </header>
+<div class="container">
+
+  <h1 class="logo">Astra Parth</h1>
 
   <div class="hero">
     <h2>UPSC Premium</h2>
-    <p>Daily Current Affairs • Notes • PYQs</p>
-    <button id="continueBtn">Continue Learning</button>
+    <p id="username">Loading Telegram...</p>
   </div>
 
-  <div class="grid">
-    <div class="card" data-page="courses">📚 Courses</div>
-    <div class="card" data-page="tests">📝 Tests</div>
-    <div class="card" data-page="calendar">📅 Calendar</div>
-    <div class="card" data-page="profile">👤 Profile</div>
-  </div>
-</section>
+</div>
 
-<!-- COURSES -->
-<section id="courses" class="page">
-  <header class="top">
-    <button class="icon back-btn">←</button>
-    <h1>Courses</h1>
-  </header>
-
-  <div class="card">General Studies</div>
-  <div class="card">CSAT</div>
-  <div class="card">Hindi Optional</div>
-</section>
-
-<!-- TESTS -->
-<section id="tests" class="page">
-  <header class="top">
-    <button class="icon back-btn">←</button>
-    <h1>Mock Tests</h1>
-  </header>
-
-  <div class="card">Today's Mock</div>
-  <div class="card">PYQ Practice</div>
-</section>
-
-<!-- CALENDAR -->
-<section id="calendar" class="page">
-  <header class="top">
-    <button class="icon back-btn">←</button>
-    <h1>Calendar</h1>
-  </header>
-
-  <div class="card">Today's Target</div>
-</section>
-
-<!-- PROFILE -->
-<section id="profile" class="page">
-  <header class="top">
-    <button class="icon back-btn">←</button>
-    <h1>Profile</h1>
-  </header>
-
-  <div class="card">
-    <strong id="username">Telegram User</strong>
-  </div>
-</section>
-
-<nav class="bottom-nav">
-  <button data-nav="home">🏠</button>
-  <button data-nav="courses">📚</button>
-  <button data-nav="tests">📝</button>
-  <button data-nav="profile">👤</button>
-</nav>
-<script src="config.js"></script>
 <script src="script.js"></script>
+
 </body>
 </html>
