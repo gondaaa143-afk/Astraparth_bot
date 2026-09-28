@@ -220,14 +220,12 @@ body{
 </div>
 
 <script>
-const tg=window.Telegram.WebApp;
-tg.ready();
-tg.expand();
+const tg = window.Telegram?.WebApp;
 
-const user=tg.initDataUnsafe.user;
+tg?.ready();
+tg?.expand();
 
-const user = tg.initDataUnsafe.user;
-
+const user = tg?.initDataUnsafe?.user;
 if(user){
   document.getElementById("username").innerText = user.first_name;
 }
@@ -235,30 +233,42 @@ if(user){
 let stack=["home"];
 
 function haptic(){
- if(tg.HapticFeedback){
-   tg.HapticFeedback.impactOccurred("light");
- }
+  tg?.HapticFeedback?.impactOccurred("light");
 }
 
-function openPage(id){
- haptic();
- document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
- document.getElementById(id).classList.add("active");
- if(stack[stack.length-1]!==id) stack.push(id);
- tg.BackButton.show();
+window.openPage=function(id){
+  haptic();
+  document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+  document.getElementById(id).classList.add("active");
+
+  if(stack[stack.length-1]!==id){
+    stack.push(id);
+  }
+
+  if(id!=="home"){
+    tg?.BackButton?.show();
+  }
 }
 
-function goBack(){
- haptic();
- stack.pop();
- const last=stack[stack.length-1]||"home";
- document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
- document.getElementById(last).classList.add("active");
- if(last==="home") tg.BackButton.hide();
+window.goBack=function(){
+  haptic();
+
+  if(stack.length>1){
+    stack.pop();
+  }
+
+  const last=stack[stack.length-1] || "home";
+
+  document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+  document.getElementById(last).classList.add("active");
+
+  if(last==="home"){
+    tg?.BackButton?.hide();
+  }
 }
 
-tg.BackButton.onClick(goBack);
-tg.BackButton.hide();
+tg?.BackButton?.onClick(goBack);
+tg?.BackButton?.hide();
 </script>
 <script>
 const supabase = window.supabase.createClient(
