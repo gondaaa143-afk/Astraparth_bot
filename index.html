@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Astra Parth</title>
 
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
@@ -11,337 +11,198 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:Poppins,sans-serif;
-}
-
-body{
-  background:#f3f3f3;
-  color:#111;
-  overflow-x:hidden;
-}
-
-.page{
-  display:none;
-  min-height:100vh;
-  padding:18px 18px 100px;
-}
-
-.page.active{
-  display:block;
-  animation:fade .25s ease;
-}
-
-@keyframes fade{
-  from{opacity:0;transform:translateY(10px)}
-  to{opacity:1;transform:none}
-}
-
-.top{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-bottom:20px;
-}
-
-.logo{
-  font-size:30px;
-  font-weight:800;
-}
-
-.circle{
-  width:46px;
-  height:46px;
-  border-radius:50%;
-  background:#fff;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  box-shadow:0 8px 20px rgba(0,0,0,.08);
-}
-
-.hero{
-  background:#111;
-  color:#fff;
-  border-radius:30px;
-  padding:26px;
-  margin-bottom:20px;
-}
-
-.hero h2{
-  font-size:28px;
-}
-
-.hero p{
-  margin:10px 0 18px;
-  opacity:.8;
-}
-
-.btn{
-  background:#fff;
-  color:#111;
-  border:none;
-  padding:13px 18px;
-  border-radius:16px;
-  font-weight:700;
-  cursor:pointer;
-}
-
-.card{
-  background:#fff;
-  border-radius:24px;
-  padding:18px;
-  margin-bottom:14px;
-  box-shadow:0 8px 20px rgba(0,0,0,.06);
-  cursor:pointer;
-}
-
-.row{
-  display:flex;
-  gap:12px;
-}
-
-.small{
-  flex:1;
-}
-
-.meta{
-  color:#666;
-  font-size:13px;
-  margin-top:6px;
-}
-
-.progress{
-  height:8px;
-  background:#ddd;
-  border-radius:999px;
-  margin-top:12px;
-  overflow:hidden;
-}
-
-.fill{
-  height:100%;
-  width:65%;
-  background:#111;
-}
-
-.back{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  margin-bottom:18px;
-  font-weight:700;
-  cursor:pointer;
-}
-
-.back .circle{
-  width:38px;
-  height:38px;
-}
-
-.bottom{
-  position:fixed;
-  left:16px;
-  right:16px;
-  bottom:16px;
-  background:#fff;
-  border-radius:24px;
-  padding:14px;
-  display:flex;
-  justify-content:space-around;
-  box-shadow:0 10px 30px rgba(0,0,0,.12);
-}
-
-.bottom button{
-  border:none;
-  background:none;
-  font-size:22px;
-  cursor:pointer;
-}
-
-.avatar{
-  width:48px;
-  height:48px;
-  border-radius:50%;
-  background:#111;
-  color:#fff;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-weight:700;
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins,sans-serif}
+body{background:#f3f3f3;color:#111}
+.page{display:none;min-height:100vh;padding:20px 20px 95px}
+.page.active{display:block}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
+.logo{font-size:30px;font-weight:800}
+.circle{width:46px;height:46px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 20px rgba(0,0,0,.08)}
+.hero{background:#111;color:#fff;border-radius:28px;padding:24px;margin-bottom:20px}
+.hero h2{font-size:28px}
+.hero p{opacity:.8;margin:10px 0 18px}
+.btn{background:#fff;color:#111;border:none;padding:13px 18px;border-radius:16px;font-weight:700;cursor:pointer}
+.card{background:#fff;border-radius:22px;padding:18px;margin-bottom:15px;box-shadow:0 8px 20px rgba(0,0,0,.06);cursor:pointer}
+.row{display:flex;gap:12px}
+.small{flex:1}
+.meta{font-size:13px;color:#666}
+.progress{height:8px;background:#ddd;border-radius:999px;margin-top:10px;overflow:hidden}
+.fill{height:100%;width:65%;background:#111}
+.bottom{position:fixed;left:16px;right:16px;bottom:16px;background:#fff;border-radius:24px;padding:14px;display:flex;justify-content:space-around;box-shadow:0 12px 28px rgba(0,0,0,.12)}
+.bottom button{border:none;background:none;font-size:22px;cursor:pointer}
+.back{display:flex;align-items:center;gap:10px;font-weight:700;margin-bottom:20px;cursor:pointer}
+.back .circle{width:38px;height:38px}
+.avatar{width:52px;height:52px;border-radius:50%;background:#111;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700}
 </style>
+
 </head>
 <body>
- <!-- HOME -->
+
+<!-- HOME -->
+
 <div id="home" class="page active">
 
-  <div class="top">
-    <div class="logo">Astra Parth</div>
-    <div class="circle">🔍</div>
-  </div>
+<div class="top">
+<div class="logo">Astra Parth</div>
+<div class="circle">🔍</div>
+</div>
 
-  <div class="hero">
-    <h2>UPSC Premium</h2>
-    <p>Daily Current Affairs • Notes • PYQs</p>
-    <button class="btn" onclick="openPage('courses')">Continue Learning</button>
-  </div>
+<div class="hero">
+<h2>UPSC Premium</h2>
+<p>Daily Current Affairs • Notes • PYQs</p>
+<button class="btn" onclick="openPage('courses')">Continue Learning</button>
+</div>
 
-  <div class="card" onclick="openPage('courses')">
-    <h3>Course Library</h3>
-    <div class="meta">Live courses from Supabase</div>
-  </div>
+<div class="card" onclick="openPage('courses')">
+<h3>Course Library</h3>
+<div class="meta">Live Courses</div>
+</div>
 
-  <div class="row">
-    <div class="card small" onclick="openPage('tests')">
-      <h3>Mock Test</h3>
-      <div class="meta">50 Questions</div>
-    </div>
+<div class="row">
 
-    <div class="card small" onclick="openPage('calendar')">
-      <h3>Calendar</h3>
-      <div class="meta">Study Plan</div>
-    </div>
-  </div>
+<div class="card small" onclick="openPage('tests')">
+<h3>Mock Test</h3>
+<div class="meta">50 Questions</div>
+</div>
 
-  <div class="card">
-    <h3 id="caTitle">Current Affairs</h3>
-    <div class="meta" id="caContent">Loading...</div>
-  </div>
+<div class="card small" onclick="openPage('calendar')">
+<h3>Calendar</h3>
+<div class="meta">Study Plan</div>
+</div>
 
-  <div class="card" onclick="openPage('profile')">
-    <h3>Profile</h3>
-    <div class="meta">View your progress</div>
-  </div>
+</div>
+
+<div class="card">
+<h3 id="caTitle">Current Affairs</h3>
+<div class="meta" id="caContent">Loading...</div>
+</div>
+
+<div class="card" onclick="openPage('profile')">
+<h3>Profile</h3>
+<div class="meta">Telegram Connected</div>
+</div>
 
 </div>
 
 <!-- COURSES -->
+
 <div id="courses" class="page">
 
-  <div class="back" onclick="goBack()">
-    <div class="circle">←</div>
-    Back
-  </div>
+<div class="back" onclick="goBack()">
+<div class="circle">←</div>
+Back
+</div>
 
-  <div class="hero">
-    <h2>Course Library</h2>
-    <p>Choose Your Subject</p>
-  </div>
+<div class="hero">
+<h2>Course Library</h2>
+<p>Choose Your Subject</p>
+</div>
 
-  <!-- Live Courses Here -->
-  <div id="coursesList"></div>
+<div id="coursesList"></div>
 
 </div>
 
 <!-- TESTS -->
+
 <div id="tests" class="page">
 
-  <div class="back" onclick="goBack()">
-    <div class="circle">←</div>
-    Back
-  </div>
+<div class="back" onclick="goBack()">
+<div class="circle">←</div>
+Back
+</div>
 
-  <div class="hero">
-    <h2>Mock Tests</h2>
-    <p>Practice Like UPSC</p>
-  </div>
+<div class="hero">
+<h2>Mock Tests</h2>
+<p>Practice Like UPSC</p>
+</div>
 
-  <div class="card">
-    <h3>Today's Mock Test</h3>
-    <div class="meta">50 Questions • 60 Minutes</div>
-  </div>
+<div class="card">
+<h3>Today's Mock Test</h3>
+<div class="meta">50 Questions • 60 Minutes</div>
+</div>
 
-  <div class="card">
-    <h3>Previous Year Papers</h3>
-    <div class="meta">UPSC PYQs</div>
-  </div>
+<div class="card">
+<h3>Previous Year Papers</h3>
+<div class="meta">UPSC PYQs</div>
+</div>
+<!-- CALENDAR -->
+
+<div id="calendar" class="page">
+
+<div class="back" onclick="goBack()">
+<div class="circle">←</div>
+Back
+</div>
+
+<div class="hero">
+<h2>Study Calendar</h2>
+<p>September Plan</p>
+</div>
+
+<div class="card">
+
+<div style="display:grid;grid-template-columns:repeat(7,1fr);gap:8px">
+
+<div class="circle" style="width:auto;height:40px">1</div>
+<div class="circle" style="width:auto;height:40px">2</div>
+<div class="circle" style="width:auto;height:40px">3</div>
+<div class="circle" style="width:auto;height:40px">4</div>
+<div class="circle" style="width:auto;height:40px">5</div>
+<div class="circle" style="width:auto;height:40px;background:#111;color:#fff">6</div>
+<div class="circle" style="width:auto;height:40px">7</div>
+
+<div class="circle" style="width:auto;height:40px">8</div>
+<div class="circle" style="width:auto;height:40px">9</div>
+<div class="circle" style="width:auto;height:40px">10</div>
+<div class="circle" style="width:auto;height:40px">11</div>
+<div class="circle" style="width:auto;height:40px">12</div>
+<div class="circle" style="width:auto;height:40px;background:#111;color:#fff">13</div>
+<div class="circle" style="width:auto;height:40px">14</div>
 
 </div>
 
-<!-- CALENDAR -->
-<div id="calendar" class="page">
-
-  <div class="back" onclick="goBack()">
-    <div class="circle">←</div>
-    Back
-  </div>
-
-  <div class="hero">
-    <h2>Study Calendar</h2>
-    <p>September Plan</p>
-  </div>
-
-  <div class="card">
-
-    <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:8px;">
-
-      <div class="circle" style="width:auto;height:40px;">1</div>
-      <div class="circle" style="width:auto;height:40px;">2</div>
-      <div class="circle" style="width:auto;height:40px;">3</div>
-      <div class="circle" style="width:auto;height:40px;">4</div>
-      <div class="circle" style="width:auto;height:40px;">5</div>
-
-      <div class="circle" style="width:auto;height:40px;background:#111;color:#fff;">6</div>
-
-      <div class="circle" style="width:auto;height:40px;">7</div>
-
-      <div class="circle" style="width:auto;height:40px;">8</div>
-      <div class="circle" style="width:auto;height:40px;">9</div>
-      <div class="circle" style="width:auto;height:40px;">10</div>
-      <div class="circle" style="width:auto;height:40px;">11</div>
-      <div class="circle" style="width:auto;height:40px;">12</div>
-
-      <div class="circle" style="width:auto;height:40px;background:#111;color:#fff;">13</div>
-
-      <div class="circle" style="width:auto;height:40px;">14</div>
-
-    </div>
-
-  </div>
+</div>
 
 </div>
 
 <!-- PROFILE -->
+
 <div id="profile" class="page">
 
-  <div class="back" onclick="goBack()">
-    <div class="circle">←</div>
-    Back
-  </div>
+<div class="back" onclick="goBack()">
+<div class="circle">←</div>
+Back
+</div>
 
-  <div class="hero">
-    <h2>Your Profile</h2>
-    <p>Telegram Connected</p>
-  </div>
+<div class="hero">
+<h2>Your Profile</h2>
+<p>Telegram Connected</p>
+</div>
 
-  <div class="card">
+<div class="card">
 
-    <div style="display:flex;align-items:center;gap:14px;">
+<div style="display:flex;align-items:center;gap:14px">
 
-      <div class="avatar">A</div>
+<div class="avatar">A</div>
 
-      <div>
-        <h3 id="username">Telegram User</h3>
-        <div class="meta">Premium Member</div>
-      </div>
+<div>
+<h3 id="username">Telegram User</h3>
+<div class="meta">Premium Member</div>
+</div>
 
-    </div>
+</div>
 
-  </div>
+</div>
 
-  <div class="card">
+<div class="card">
 
-    <h3>Progress</h3>
+<h3>Progress</h3>
 
-    <div class="progress">
-      <div class="fill"></div>
-    </div>
+<div class="progress">
+<div class="fill"></div>
+</div>
 
-  </div>
+</div>
 
 </div>
 
@@ -349,115 +210,117 @@ body{
 
 <div class="bottom">
 
-  <button onclick="openPage('home')">🏠</button>
+<button onclick="openPage('home')">🏠</button>
 
-  <button onclick="openPage('courses')">📚</button>
+<button onclick="openPage('courses')">📚</button>
 
-  <button onclick="openPage('tests')">📝</button>
+<button onclick="openPage('tests')">📝</button>
 
-  <button onclick="openPage('profile')">👤</button>
+<button onclick="openPage('profile')">👤</button>
 
 </div>
-<script>
-const tg = window.Telegram.WebApp;
-tg.ready();
-tg.expand();
 
-// ===== Supabase =====
+<script>
+const tg = window.Telegram?.WebApp;
+
+if(tg){
+  tg.ready();
+  tg.expand();
+}
+
 const supabase = window.supabase.createClient(
-  "https://urwuqeujgqrsjjvzfzir.supabase.co",
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVyd3VxZXVqZ3Fyc2pqdnpmemlyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTA1MzUzNDMsImV4cCI6MjEwNjExMTM0M30.OzqEyvkR8UDD4vWpILiD0ay3rF-7zo_IDSjgv5PiqO8"
+ "https://urwuqeujgqrsjjvzfzir.supabase.co",
+ "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVyd3VxZXVqZ3Fyc2pqdnpmemlyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTA1MzUzNDMsImV4cCI6MjEwNjExMTM0M30.OzqEyvkR8UDD4vWpILiD0ay3rF-7zo_IDSjgv5PiqO8"
 );
 
-// ===== Telegram User =====
-const tgUser = tg.initDataUnsafe.user;
-if (tgUser) {
-  document.getElementById("username").innerText = tgUser.first_name;
+const tgUser = tg?.initDataUnsafe?.user;
+
+if(tgUser){
+ document.getElementById("username").innerText=tgUser.first_name;
 }
 
-// ===== Navigation =====
-let stack = ["home"];
+let stack=["home"];
 
-function showPage(id) {
-  document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
-  document.getElementById(id).classList.add("active");
+function showPage(id){
+ document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+ document.getElementById(id).classList.add("active");
 }
 
-window.openPage = function(id) {
-  showPage(id);
-  if (stack[stack.length - 1] !== id) stack.push(id);
-  if (id !== "home") tg.BackButton.show();
-};
-
-window.goBack = function() {
-  if (stack.length > 1) stack.pop();
-  const last = stack[stack.length - 1];
-  showPage(last);
-  if (last === "home") tg.BackButton.hide();
-};
-
-tg.BackButton.onClick(goBack);
-tg.BackButton.hide();
-
-// ===== Save User =====
-async function saveUser() {
-  if (!tgUser) return;
-
-  await supabase.from("users").upsert(
-    {
-      telegram_id: tgUser.id,
-      name: tgUser.first_name,
-      username: tgUser.username || ""
-    },
-    { onConflict: "telegram_id" }
-  );
+window.openPage=function(id){
+ showPage(id);
+ if(stack[stack.length-1]!==id){
+   stack.push(id);
+ }
+ tg?.BackButton.show();
 }
 
-// ===== Load Courses =====
-async function loadCourses() {
-  const { data } = await supabase.from("courses").select("*");
+window.goBack=function(){
+ if(stack.length>1){
+   stack.pop();
+ }
+ const last=stack[stack.length-1];
+ showPage(last);
 
-  const wrap = document.getElementById("coursesList");
-  wrap.innerHTML = "";
-
-  (data || []).forEach(course => {
-    wrap.innerHTML += `
-      <div class="card">
-        <h3>${course.title}</h3>
-        <div class="meta">${course.description}</div>
-        <div class="progress">
-          <div class="fill" style="width:${course.progress}%"></div>
-        </div>
-      </div>
-    `;
-  });
+ if(last==="home"){
+   tg?.BackButton.hide();
+ }
 }
 
-// ===== Load Current Affairs =====
-async function loadCurrentAffairs() {
-  const { data } = await supabase
-    .from("current_affairs")
-    .select("*")
-    .order("created_at", { ascending: false })
-    .limit(1);
+tg?.BackButton.onClick(goBack);
+tg?.BackButton.hide();
 
-  if (data && data.length) {
-    document.getElementById("caTitle").innerText = data[0].title;
-    document.getElementById("caContent").innerText = data[0].content;
-  }
+async function init(){
+
+ try{
+
+ if(tgUser){
+   await supabase.from("users").upsert({
+     telegram_id:tgUser.id,
+     name:tgUser.first_name,
+     username:tgUser.username||""
+   },{onConflict:"telegram_id"});
+ }
+
+ const {data:courses}=await supabase.from("courses").select("*");
+
+ const wrap=document.getElementById("coursesList");
+ wrap.innerHTML="";
+
+ (courses||[]).forEach(c=>{
+
+ wrap.innerHTML+=`
+ <div class="card">
+ <h3>${c.title}</h3>
+ <div class="meta">${c.description}</div>
+ <div class="progress">
+ <div class="fill" style="width:${c.progress}%"></div>
+ </div>
+ </div>`;
+
+ });
+
+ const {data:ca}=await supabase
+ .from("current_affairs")
+ .select("*")
+ .limit(1);
+
+ if(ca&&ca.length){
+
+ document.getElementById("caTitle").innerText=ca[0].title;
+ document.getElementById("caContent").innerText=ca[0].content;
+
+ }
+
+ }catch(err){
+   console.log(err);
+ }
+
 }
 
-// ===== Start =====
-(async () => {
-  try {
-    await saveUser();
-    await loadCourses();
-    await loadCurrentAffairs();
-  } catch (err) {
-    console.log("Supabase Error:", err);
-  }
-})();
+init();
+
 </script>
 
 </body>
 </html>
+</div>
