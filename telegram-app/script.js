@@ -1,126 +1,46 @@
-// ===== Astra Parth V2 =====
+const tg = window.Telegram?.WebApp;
+tg?.ready();
+tg?.expand();
 
-const tg = window.Telegram.WebApp;
-
-tg.ready();
-tg.expand();
-
-// ---------- Haptic ----------
-function haptic(type = "light") {
-  tg.HapticFeedback?.impactOccurred(type);
+const user = tg?.initDataUnsafe?.user;
+if(user){
+  document.getElementById("username").textContent = user.first_name;
 }
 
-// ---------- User ----------
-let tgUser = tg.initDataUnsafe?.user || null;
+const pages = document.querySelectorAll(".page");
+const stack = ["home"];
 
-// Fallback: initData se user nikaalo
-if (!tgUser && tg.initData) {
-  try {
-    const params = new URLSearchParams(tg.initData);
-    const rawUser = params.get("user");
-    if (rawUser) tgUser = JSON.parse(rawUser);
-  } catch (e) {
-    console.log("User Parse Error:", e);
-  }
+function show(id){
+  pages.forEach(p=>p.classList.remove("active"));
+  document.getElementById(id).classList.add("active");
 }
 
-// Profile name
-if (tgUser && document.getElementById("username")) {
-  document.getElementById("username").innerText = tgUser.first_name;
+window.openPage = function(id){
+  if(stack[stack.length-1]!==id) stack.push(id);
+  show(id);
+  tg?.BackButton?.show();
 }
 
-// ---------- Navigation ----------
-const pages = ["home", "courses", "tests", "calendar", "profile"];
-let stack = ["home"];
-
-function showPage(page) {
-  document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
-
-  const el = document.getElementById(page);
-  if (el) el.classList.add("active");
-
-  if (page === "home") {
-    tg.BackButton.hide();
-  } else {
-    tg.BackButton.show();
-  }
+window.goBack = function(){
+  if(stack.length>1) stack.pop();
+  const last = stack[stack.length-1];
+  show(last);
+  if(last==="home") tg?.BackButton?.hide();
 }
 
-window.openPage = function (page) {
-  haptic();
+document.getElementById("continueBtn").onclick = ()=>openPage("courses");
 
-  if (!pages.includes(page)) return;
-
-  if (stack[stack.length - 1] !== page) {
-    stack.push(page);
-  }
-
-  showPage(page);
-};
-
-window.goBack = function () {
-  haptic();
-
-  if (stack.length > 1) {
-    stack.pop();
-  }
-
-  showPage(stack[stack.length - 1]);
-};
-
-tg.BackButton.onClick(goBack);
-tg.BackButton.hide();
-
-// Continue Button
-document.getElementById("continueBtn")?.addEventListener("click", () => {
-  openPage("courses");
+document.querySelectorAll("[data-page]").forEach(c=>{
+  c.onclick=()=>openPage(c.dataset.page);
 });
 
-// Bottom Navigation
-document.querySelectorAll("[data-nav]").forEach(btn => {
-  btn.addEventListener("click", () => {
-    openPage(btn.dataset.nav);
-  });
+document.querySelectorAll("[data-nav]").forEach(b=>{
+  b.onclick=()=>openPage(b.dataset.nav);
 });
 
-// Cards
-document.querySelectorAll("[data-page]").forEach(card => {
-  card.addEventListener("click", () => {
-    openPage(card.dataset.page);
-  });
+document.querySelectorAll(".back-btn").forEach(b=>{
+  b.onclick=goBack;
 });
 
-// ---------- Save User ----------
-async function saveUser() {
-
-  if (!tgUser || !tgUser.id) {
-    console.log("Telegram user not found");
-    return;
-  }
-
-  try {
-
-    const res = await fetch(CONFIG.EDGE_FUNCTION, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        telegram_id: tgUser.id,
-        name: tgUser.first_name,
-        username: tgUser.username || ""
-      })
-    });
-
-    console.log("User Saved:", await res.json());
-
-  } catch (err) {
-    console.log("Save Error:", err);
-  }
-
-}
-
-// ---------- Start ----------
-setTimeout(() => {
-  saveUser();
-}, 500);
+tg?.BackButton?.onClick(goBack);
+tg?.BackButton?.hide();
